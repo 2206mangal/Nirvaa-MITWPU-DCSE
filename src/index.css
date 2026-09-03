@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-700 font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent-500/30 text-slate-900;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-500 via-accent-600 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-white/95 backdrop-blur-xl border border-slate-200 shadow-sm;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-accent-400/40 hover:bg-white hover:shadow-md;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(14, 116, 144, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 116, 144, 0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .grid-bg-sm {
+    background-image:
+      linear-gradient(rgba(14, 116, 144, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 116, 144, 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .glow-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(8, 145, 178, 0.45),
+      transparent
+    );
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-pulse-slow,
+  .animate-glow,
+  .animate-float,
+  .animate-scan,
+  .animate-dash,
+  .animate-blink {
+    animation: none !important;
+  }
+}
